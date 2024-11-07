@@ -1,6 +1,11 @@
+import os
 # Go to 21,12 to see the correct result
 m = 26 # Length of the alphabet
-with open('./affine/cyphered_message.txt', 'r', encoding='utf-8') as cyphered_file: # Read the cyphered file and assign it to a variable
+
+current_dir = os.path.dirname(__file__) # Get the directory of the script
+cyphered_message_path = os.path.join(current_dir, "./cyphered_message.txt")
+
+with open(cyphered_message_path, 'r', encoding='utf-8') as cyphered_file: # Read the cyphered file and assign it to a variable
     cyphered_text = cyphered_file.read()
 
 decyphered_message = "Go to 21,12 for the correct result \n"
@@ -26,6 +31,7 @@ for a_inv in range(0,26): # Start trying every single a value
                 decyphered_message += char # Append the symbol back to the text without cyphering
         decyphered_message += "\n"
 
-output_file = open('./affine/brute_force_results.txt', 'w+', encoding='utf-8')
+results_path = os.path.join(current_dir, "./brute_force_results.txt")
+output_file = open(results_path, 'w+', encoding='utf-8')
 output_file.write(decyphered_message) # Write the output text
 output_file.close() # Close the file

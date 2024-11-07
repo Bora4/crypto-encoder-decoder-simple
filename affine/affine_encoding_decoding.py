@@ -1,8 +1,13 @@
-a, b = 5, 12 # Define the key
+import os
+a, b = 5, 12 # TODO: make key random
 m = 26 # Define the length of the alphabet
 
-with open('./input.txt', 'r', encoding='utf-8') as input_file: # Read the input file and assign it to a variable
+current_dir = os.path.dirname(__file__) # Get the directory of the script
+input_path = os.path.join(current_dir, "../input.txt")
+
+with open(input_path, 'r', encoding='utf-8') as input_file: # Read the input file and assign it to a variable
     input_text = input_file.read()
+input_file.close()
 
 cyphered_text = "" # Initialize the cyphered text
 
