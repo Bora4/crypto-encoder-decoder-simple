@@ -1,17 +1,19 @@
 import os
-# Go to 21,12 to see the correct result
 m = 26 # Length of the alphabet
 
 current_dir = os.path.dirname(__file__) # Get the directory of the script
 cyphered_message_path = os.path.join(current_dir, "./cyphered_message.txt")
+debug_key_path = os.path.join(current_dir, "./key_for_debugging.txt")
 
 with open(cyphered_message_path, 'r', encoding='utf-8') as cyphered_file: # Read the cyphered file and assign it to a variable
     cyphered_text = cyphered_file.read()
+with open(debug_key_path, 'r', encoding='utf-8') as debug_file: # Read the cyphered file and assign it to a variable
+    debug_key = debug_file.read()
 
-decyphered_message = "Go to 21,12 for the correct result \n"
+decyphered_message = "Go to " + debug_key + " for the correct result \n"
 
-for a_inv in range(0,26): # Start trying every single a value
-    for b in range(0,26): # Try every b value with every a_inv value
+for a_inv in range(1,25): # Start trying every single a value
+    for b in range(1,25): # Try every b value with every a_inv value
         decyphered_message += "\nDecrypted message using " + str(a_inv) + "," + str(b) + ":\n"
         for char in cyphered_text: # Start a for loop to decrypt the text char by char
             if char.isalpha(): # Skips symbols like comma or dots
