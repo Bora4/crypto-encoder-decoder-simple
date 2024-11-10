@@ -159,12 +159,8 @@ def s_box_substitution(state):
     output = []
     for i in range(8): # 8 S-boxes
         block = state[i*6:(i+1)*6]
-        # binary_string = f"{block[0]:b}{block[5]:b}"
         row = int(f"{block[0]}{block[5]}", 2)
-        # row = int(binary_string, 2)
         col = int("".join(map(str, block[1:5])), 2)
-        # binary_string = f"{block[1]:b}{block[5]:b}"
-        # col = int(binary_string, 2)
         value = S_BOXES[i][row][col]
         output += [int(bit) for bit in f"{value:04b}"]
     return output
